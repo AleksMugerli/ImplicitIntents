@@ -19,9 +19,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText loca;
     private EditText websiteEditText;
     private EditText shareEditText;
+    private EditText tel; // Dodana deklaracija za vnos številke
     private Button button1;
     private Button button2;
     private Button button3;
+    private Button button4; // Dodana deklaracija za gumb za klic
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +40,12 @@ public class MainActivity extends AppCompatActivity {
         websiteEditText = findViewById(R.id.wb);
         loca = findViewById(R.id.loc);
         shareEditText = findViewById(R.id.sh);
+        tel = findViewById(R.id.tel); // Povezava vnosnega polja za telefon
 
         button1 = findViewById(R.id.button);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4); // Povezava gumba za klic
 
         // button1 (ID: button) -> Odpiranje spletne strani v Google Chromu
         button1.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +68,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 shareText(v);
+            }
+        });
+
+        // button4 (ID: button4) -> Klicanje telefonske številke (Premaknjeno znotraj onCreate)
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Branje telefonske številke iz vnosnega polja
+                String telefonskaStevilka = tel.getText().toString().trim();
+
+                if (!telefonskaStevilka.isEmpty()) {
+                    // Ustvarjanje namena (Intent) z uporabo Uri.parse()
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + telefonskaStevilka));
+                    startActivity(intent);
+                } else {
+                    tel.setError("Vnesite telefonsko številko");
+                }
             }
         });
     }
