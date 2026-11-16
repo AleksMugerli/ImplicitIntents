@@ -20,21 +20,6 @@ The application features four main input fields and corresponding buttons to tri
     *   `Uri.parse()` to seamlessly convert string inputs into data URIs.
     *   `intent.setPackage()` targeting specific apps (Chrome and Maps) with automatic system fallbacks.
 
-## 📋 XML Layout Requirements
-
-For the `MainActivity.java` code to bind properly, your `activity_main.xml` file must contain components with the following resource IDs:
-
-| UI Component | Resource ID (`android:id`) | Purpose |
-| :--- | :--- | :--- |
-| **EditText** | `@+id/wb` | Web URL input field |
-| **EditText** | `@+id/loc` | Location/Address input field |
-| **EditText** | `@+id/sh` | Text sharing input field |
-| **EditText** | `@+id/tel` | Phone number input field |
-| **Button** | `@+id/button` | Triggers web browser intent |
-| **Button** | `@+id/button2` | Triggers map intent |
-| **Button** | `@+id/button3` | Triggers share sheet intent |
-| **Button** | `@+id/button4` | Triggers phone dialer intent |
-
 ## ⚙️ Installation & Setup
 
 1. Clone or download this repository.
